@@ -1,11 +1,6 @@
 # syntax=docker/dockerfile:1.4.1
 FROM eclipse-temurin:17.0.3_7-jre-alpine
 
-# Versioning
-ARG MULTIPAPER_VERSION=1.18.2
-ARG MULTIPAPER_BUILD=95
-ARG MASTER_VERSION=2.8.8
-
 # Setup groups and install dumb init
 RUN addgroup --gid 1001 multipaper && \
     adduser --home /multipaper --uid 1001 -S -G multipaper multipaper && \
@@ -18,7 +13,7 @@ WORKDIR /multipaper
 USER multipaper
 
 # Download multipaper
-ADD --chown=multipaper:multipaper https://multipaper.io/api/v2/projects/multipaper/versions/$MULTIPAPER_VERSION/builds/$MULTIPAPER_BUILD/downloads/MultiPaper-Master-$MASTER_VERSION-all.jar multipaper-master.jar
+ADD --chown=multipaper:multipaper https://github.com/Titivoot/MultiPaper/releases/download/v1.20.1/multipaper-master-2.11.0-all.jar multipaper-master.jar
 
 # Expose the ports of the master server and proxy
 EXPOSE 35353/tcp

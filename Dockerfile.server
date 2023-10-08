@@ -1,11 +1,6 @@
 # syntax=docker/dockerfile:1.4.1
 FROM eclipse-temurin:17.0.3_7-jre-alpine
 
-# Versioning
-ARG VERSION=1.18.2
-ARG BUILD=95
-ARG FULL_VERSION="$VERSION-$BUILD"
-
 # Setup groups and install dumb init
 RUN addgroup --gid 1001 multipaper && \
     adduser --home /multipaper --uid 1001 -S -G multipaper multipaper && \
@@ -18,7 +13,7 @@ WORKDIR /multipaper
 USER multipaper
 
 # Download multipaper
-ADD --chown=multipaper:multipaper https://multipaper.io/api/v2/projects/multipaper/versions/$VERSION/builds/$BUILD/downloads/multipaper-$FULL_VERSION.jar multipaper.jar
+ADD --chown=multipaper:multipaper https://github.com/Titivoot/MultiPaper/releases/download/v1.20.1/multipaper-1.20.1-R0.1-SNAPSHOT.jar multipaper.jar
 
 # Expose the required ports
 EXPOSE 25565/tcp
