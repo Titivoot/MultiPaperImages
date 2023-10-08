@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1.4.1
-FROM eclipse-temurin:17.0.3_7-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 # Setup groups and install dumb init
 RUN addgroup --gid 1001 multipaper && \
     adduser --home /multipaper --uid 1001 -S -G multipaper multipaper && \
-    apk add --no-cache dumb-init=1.2.5-r1
+    apk add --no-cache dumb-init=1.2.5-r2
 
 # Use the multipaper's home directory as our work directory
 WORKDIR /multipaper
